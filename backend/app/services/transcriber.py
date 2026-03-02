@@ -12,7 +12,7 @@ from app.config import get_settings
 
 logger = logging.getLogger(__name__)
 
-SARVAM_API_URL = "https://api.sarvam.ai/speech-to-text-translate"
+SARVAM_API_URL = "https://api.sarvam.ai/speech-to-text"
 
 
 @dataclass
@@ -60,8 +60,7 @@ class Transcriber:
                 "file": ("audio.wav", audio_file, "audio/wav"),
             }
             data = {
-                "model": "saarika:v2",
-                "with_timestamps": "false",
+                "model": "saarika:v2.5",
             }
             headers = {
                 "api-subscription-key": self.api_key,
@@ -75,6 +74,10 @@ class Transcriber:
                         data=data,
                         headers=headers,
                     )
+                    
+                    if response.status_code >= 400:
+                        logger.error(f"Sarvam AI Bad Response: {response.text}")
+                        
                     response.raise_for_status()
                     result = response.json()
 
@@ -92,12 +95,7 @@ class Transcriber:
                     )
 
             except httpx.HTTPStatusError as e:
-                error_detail = ""
-                try:
-                    error_detail = e.response.json().get("message", "")
-                except Exception:
-                    error_detail = e.response.text[:200]
-                    
+                error_detail = e.response.text[:500]
                 raise RuntimeError(
                     f"Sarvam AI API error ({e.response.status_code}): {error_detail}"
                 ) from e

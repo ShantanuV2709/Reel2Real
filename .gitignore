@@ -53,3 +53,5 @@ temp/
 *.mp4
 *.webm
 !frontend/public/**
+
+backend/.env.example
