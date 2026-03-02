@@ -34,7 +34,7 @@ Reel2Real is an AI-powered web application that takes an Instagram Reel URL and 
 
 ```bash
 # Clone the repo
-git clone <repo-url>
+git clone https://github.com/ShantanuV2709/Reel2Real.git
 cd Reel2Real
 
 # Copy environment variables
