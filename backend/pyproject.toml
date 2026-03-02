@@ -1,0 +1,58 @@
+[project]
+name = "reel2real-backend"
+version = "0.1.0"
+description = "Reel2Real — AI-powered Instagram Reel to Learning Roadmap pipeline"
+requires-python = ">=3.11"
+dependencies = [
+    # Web framework
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "python-multipart>=0.0.6",
+    
+    # Validation
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    
+    # Database
+    "sqlmodel>=0.0.14",
+    "asyncpg>=0.29.0",
+    "psycopg2-binary>=2.9.9",
+    
+    # Task queue
+    "celery[redis]>=5.3.6",
+    "redis>=5.0.0",
+    
+    # Reel extraction
+    "yt-dlp>=2024.1.0",
+    
+    # Transcription (Sarvam AI — via HTTP, no heavy deps)
+    "httpx>=0.26.0",
+    
+    # OCR
+    "paddleocr>=2.7.0",
+    "paddlepaddle>=2.6.0",
+    
+    # AI / LLM
+    "google-genai>=1.0.0",
+    
+    # Resource discovery
+    "tavily-python>=0.3.0",
+    
+    # Utilities
+    "python-dotenv>=1.0.0",
+    "Pillow>=10.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.23.0",
+    "httpx>=0.26.0",
+]
+
+[build-system]
+requires = ["setuptools>=69.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[tool.setuptools.packages.find]
+include = ["app*"]

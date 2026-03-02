@@ -1,0 +1,317 @@
+/* ─── Google Fonts ─── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500&display=swap');
+
+@import "tailwindcss";
+
+/* ─── Design Tokens ─── */
+:root {
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #111111;
+  --bg-tertiary: #1A1A1A;
+  --fg-primary: #F5F5F5;
+  --fg-secondary: #888888;
+  --fg-tertiary: #444444;
+  --accent-yellow: #F0FF00;
+  --accent-red: #FF3B00;
+  --accent-cyan: #00D4FF;
+  --accent-green: #00FF88;
+  --accent-orange: #FF8800;
+  --border-subtle: #222222;
+  --border-default: #333333;
+
+  /* Typography */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-body: 'Inter', sans-serif;
+
+  /* Spacing (8px grid) */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+  --space-2xl: 96px;
+  --space-3xl: 160px;
+
+  /* Transitions */
+  --ease-sharp: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 80ms;
+  --duration-normal: 150ms;
+}
+
+/* ─── Global Reset ─── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 0 !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--fg-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background-color: var(--accent-yellow);
+  color: #000000;
+}
+
+/* ─── Typography Scale ─── */
+.t1-hero {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(48px, 8vw, 96px);
+  letter-spacing: -2px;
+  line-height: 0.95;
+}
+
+.t2-section {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: -1.5px;
+  line-height: 1.0;
+}
+
+.t3-card-header {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 36px;
+  letter-spacing: -1px;
+}
+
+.t4-subheading {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: -0.5px;
+}
+
+.t5-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.t6-mono-label {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.t7-mono-body {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.t8-mono-large {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 20px;
+}
+
+/* ─── Section Label ─── */
+.section-label {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--fg-tertiary);
+  border-top: 2px solid var(--accent-yellow);
+  padding-top: var(--space-xs);
+  display: inline-block;
+  margin-bottom: var(--space-lg);
+}
+
+/* ─── Buttons ─── */
+.btn-primary {
+  background: var(--accent-yellow);
+  color: #000000;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 14px 32px;
+  border: none;
+  cursor: pointer;
+  transition: all var(--duration-fast) linear;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: #FFFFFF;
+  color: #000000;
+  box-shadow: 2px 2px 0 var(--accent-yellow);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--fg-primary);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 14px 32px;
+  border: 1px solid var(--fg-tertiary);
+  cursor: pointer;
+  transition: all var(--duration-fast) linear;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-yellow);
+  color: var(--accent-yellow);
+}
+
+/* ─── Input ─── */
+.input-primary {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  color: var(--fg-primary);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  padding: 16px 20px;
+  height: 56px;
+  width: 100%;
+  outline: none;
+  transition: border-color var(--duration-fast) linear;
+}
+
+.input-primary::placeholder {
+  color: #555555;
+}
+
+.input-primary:focus {
+  border-color: var(--accent-yellow);
+  box-shadow: 0 0 0 1px var(--accent-yellow);
+}
+
+/* ─── Cards ─── */
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  padding: 32px;
+  transition: border-color var(--duration-fast) linear;
+}
+
+.card:hover {
+  border-color: var(--border-default);
+}
+
+/* ─── Tags / Badges ─── */
+.badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  display: inline-block;
+}
+
+.badge-high {
+  background: var(--accent-red);
+  color: #FFFFFF;
+}
+
+.badge-medium {
+  background: var(--accent-orange);
+  color: #000000;
+}
+
+.badge-low {
+  background: var(--border-default);
+  color: var(--fg-secondary);
+}
+
+.badge-outline {
+  background: transparent;
+  border: 1px solid var(--fg-tertiary);
+  color: var(--fg-secondary);
+}
+
+/* ─── Dividers ─── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+  margin: 0;
+}
+
+/* ─── Noise Texture Overlay ─── */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ─── Blinking Cursor ─── */
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* ─── Container ─── */
+.container-edge {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+@media (max-width: 768px) {
+  .container-edge {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--fg-tertiary);
+}
